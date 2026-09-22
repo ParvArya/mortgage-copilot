@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Darwix Mortgage Copilot — Prototype</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#172033;--muted:#667085;--line:#e5e7eb;--accent:#315efb;--warn:#b7791f;--danger:#c53030;--ok:#21865b}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}
+button{font:inherit;cursor:pointer;border:0}.app{min-height:100vh}.top{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px}.brand{font-weight:800;font-size:20px;letter-spacing:-.4px}.brand span{color:var(--accent)}.status{font-size:13px;color:var(--muted)}
+.layout{display:flex;min-height:calc(100vh - 68px)}.side{width:230px;background:#fff;border-right:1px solid var(--line);padding:22px 14px}.nav{padding:12px 14px;border-radius:9px;margin:5px 0;color:#4b5563;font-size:14px}.nav.active{background:#eef2ff;color:#2449d8;font-weight:700}
+.main{flex:1;padding:30px;max-width:1400px}.screen{display:none}.screen.active{display:block}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:700}.title{font-size:30px;letter-spacing:-1px;margin:6px 0}.sub{color:var(--muted);margin:0 0 24px}.grid{display:grid;gap:18px}.two{grid-template-columns:1.25fr .75fr}.three{grid-template-columns:repeat(3,1fr)}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 1px 2px #00000008}.card h3{margin:0 0 14px;font-size:16px}.row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #f0f1f3;font-size:14px}.row:last-child{border-bottom:0}.label{color:var(--muted)}.pill{display:inline-flex;align-items:center;padding:5px 9px;border-radius:99px;font-size:12px;font-weight:700;background:#eef2ff;color:#3154cf}.pill.warn{background:#fff7e6;color:#996515}.pill.danger{background:#fff0f0;color:#b42318}.pill.ok{background:#eaf8f1;color:#16734d}.btn{padding:10px 15px;border-radius:9px;font-weight:700;font-size:13px}.primary{background:var(--accent);color:white}.secondary{background:#eef1f5;color:#253044}.dangerbtn{background:#fff0f0;color:#b42318}.toolbar{display:flex;gap:9px;align-items:center}.meeting{display:grid;grid-template-columns:1fr 320px;gap:18px}.transcript{height:500px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:18px;background:#fafbfc}.line{padding:13px 0;border-bottom:1px solid #eceef2}.speaker{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase}.msg{margin-top:4px;line-height:1.45}.ai{border:1px solid #f0d48b;background:#fffaf0;border-radius:12px;padding:16px;margin-top:15px}.ai.high{border-color:#efb0b0;background:#fff6f6}.ai h4{margin:0 0 7px}.ai p{margin:7px 0;color:#4b5563;font-size:13px;line-height:1.45}.actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}.progress{height:7px;background:#edf0f4;border-radius:10px;overflow:hidden}.bar{height:100%;background:var(--accent);width:33%}.big{font-size:28px;font-weight:800}.metric{min-height:110px}.toast{position:fixed;right:24px;bottom:24px;background:#172033;color:#fff;padding:13px 17px;border-radius:10px;display:none;font-size:13px;box-shadow:0 8px 30px #0002}.check{color:var(--ok);font-weight:700}.warntext{color:var(--warn);font-weight:700}.dangertext{color:var(--danger);font-weight:700}.small{font-size:12px;color:var(--muted)}.hero-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+@media(max-width:900px){.side{display:none}.meeting,.two,.three{grid-template-columns:1fr}.main{padding:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand">darwix<span>·</span> Mortgage Copilot</div><div class="status">Prototype • Simulated data • Mock integrations • Human-in-the-loop</div></header>
+<div class="layout">
+<aside class="side">
+<div class="nav active" id="n1">Meeting Brief</div>
+<div class="nav" id="n2">Live Copilot</div>
+<div class="nav" id="n3">Post-Meeting</div>
+<div class="nav" id="n4">Manager View</div>
+</aside>
+<main class="main">
+
+<section class="screen active" id="brief">
+<div class="eyebrow">Upcoming meeting</div><h1 class="title">Sarah & Mike Thompson</h1><p class="sub">First-time homebuyers · Target purchase $550,000 · Purchase timeline 2–4 weeks</p>
+<div class="grid two">
+<div class="card"><h3>Customer context</h3>
+<div class="row"><span class="label">Sarah</span><b>Salaried employee</b></div>
+<div class="row"><span class="label">Mike</span><b>Salary + variable bonus</b></div>
+<div class="row"><span class="label">Existing liability</span><b>Auto loan</b></div>
+<div class="row"><span class="label">Other lender</span><b>Yes</b></div>
+<div class="row"><span class="label">Formal application</span><b>Not started</b></div>
+</div>
+<div class="card"><h3>AI meeting brief</h3>
+<div class="row"><span>Understand affordability</span><span class="check">✓</span></div>
+<div class="row"><span>Clarify income & liabilities</span><span class="check">✓</span></div>
+<div class="row"><span>Understand competitor offer</span><span class="check">✓</span></div>
+<div class="row"><span>Agree on next action</span><span class="check">✓</span></div>
+</div></div>
+<div class="card" style="margin-top:18px"><h3>AI-prepared questions</h3>
+<div class="row"><span>1. How long has Mike received variable compensation?</span><span class="pill warn">Income</span></div>
+<div class="row"><span>2. What are the current monthly payments on liabilities?</span><span class="pill">Profile</span></div>
+<div class="row"><span>3. What monthly payment feels comfortable?</span><span class="pill">Affordability</span></div>
+<div class="row"><span>4. What did the other lender offer?</span><span class="pill">Objection</span></div>
+</div>
+<div style="margin-top:20px"><button class="btn primary" onclick="show('live')">Start meeting →</button></div>
+</section>
+
+<section class="screen" id="live">
+<div class="hero-actions"><div><div class="eyebrow">Live meeting · 24:16</div><h1 class="title">Sarah & Mike</h1></div><div class="toolbar"><span class="pill ok">● Listening</span><button class="btn secondary" onclick="endMeeting()">End meeting</button></div></div>
+<div class="meeting">
+<div class="card"><h3>Live conversation</h3><div class="transcript" id="transcript">
+<div class="line"><div class="speaker">Mike</div><div class="msg">“I make around $120k including my annual bonus.”</div></div>
+<div class="line"><div class="speaker">Sarah</div><div class="msg">“Our car payment is around $700.”</div></div>
+<div class="line"><div class="speaker">Mike</div><div class="msg">“The balance is probably close to $18,000.”</div></div>
+<div class="line"><div class="speaker">Sarah</div><div class="msg">“I thought it was almost paid off.”</div></div>
+<div class="line"><div class="speaker">Agent</div><div class="msg">“Based on everything you've told me, I think you'll definitely get approved.”</div></div>
+<div class="line"><div class="speaker">Agent</div><div class="msg">“Okay, I think that's everything. We'll be in touch.”</div></div>
+</div></div>
+<div class="card"><h3>Customer profile</h3>
+<div class="row"><span class="label">Income</span><span class="warntext">⚠ Variable bonus</span></div>
+<div class="row"><span class="label">Employment</span><span class="check">✓ Confirmed</span></div>
+<div class="row"><span class="label">Liability</span><span class="check">✓ $700/mo</span></div>
+<div class="row"><span class="label">Documents</span><b id="docs">2 / 6</b></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<div class="ai" id="ai1"><h4>🟡 Clarify variable income</h4><p><b>Trigger:</b> Variable compensation detected.</p><p>Ask about history and consistency before treating it as established income.</p><div class="actions"><button class="btn primary" onclick="acceptIncome()">Ask now</button><button class="btn secondary" onclick="dismiss('ai1')">Dismiss</button></div></div>
+
+<div class="ai" id="ai2" style="display:none"><h4>🔴 Information conflict</h4><p><b>Detected:</b> Borrowers gave conflicting statements about the auto-loan balance.</p><p><b>Recommendation:</b> Confirm current balance and monthly payment before proceeding.</p><div class="actions"><button class="btn primary" onclick="resolveConflict()">Resolve</button><button class="btn secondary" onclick="dismiss('ai2')">Dismiss</button></div></div>
+
+<div class="ai high" id="ai3" style="display:none"><h4>🔴 High-severity compliance alert</h4><p><b>Detected:</b> Informal approval statement before underwriting.</p><p><b>Suggested wording:</b> “Based on the information you've provided, this may be a viable option, subject to verification and underwriting.”</p><p class="small">Type: Hybrid — speech understanding + deterministic compliance rule.</p><div class="actions"><button class="btn primary" onclick="useWording()">Use wording</button><button class="btn secondary" onclick="dismiss('ai3')">Dismiss</button><button class="btn dangerbtn" onclick="escalate()">Escalate</button></div></div>
+
+<div class="ai" id="ai4" style="display:none"><h4>🟡 Meeting closure detected</h4><p>No concrete next action detected. Recommend documentation request + application follow-up.</p><div class="actions"><button class="btn primary" onclick="createNext()">Accept next action</button><button class="btn secondary" onclick="dismiss('ai4')">Dismiss</button></div></div>
+</div>
+<div class="ai" id="ai5" style="display:none"><h4>🟡 Competitor offer detected</h4><p><b>Trigger:</b> Customer says another lender offered 6.1%.</p><p><b>Recommendation:</b> Clarify whether 6.1% is rate or APR and whether points, credits or other pricing assumptions are included before comparing.</p><p class="small">Type: Hybrid — conversation understanding + comparison checklist.</p><div class="actions"><button class="btn primary" onclick="acceptExtra('ai5','Competitor offer captured')">Capture details</button><button class="btn secondary" onclick="dismiss('ai5')">Dismiss</button></div></div>
+<div class="ai high" id="ai6" style="display:none"><h4>🔴 Potential liability exclusion</h4><p><b>Detected:</b> Agent suggests leaving an existing liability out of the application.</p><p><b>Recommendation:</b> Do not omit known obligations. Confirm the liability and capture required details.</p><p class="small">Type: Rule-based guardrail. High severity.</p><div class="actions"><button class="btn primary" onclick="acceptExtra('ai6','Liability guardrail accepted')">Acknowledge</button><button class="btn secondary" onclick="dismiss('ai6')">Dismiss</button><button class="btn dangerbtn" onclick="escalateExtra()">Escalate</button></div></div>
+<div class="ai" id="ai7" style="display:none"><h4>🟡 Affordability question</h4><p><b>Trigger:</b> Customer asks, “Can we afford a $600K home?”</p><p><b>Recommendation:</b> Collect missing affordability inputs and present scenarios; do not frame the result as lending approval.</p><div class="actions"><button class="btn primary" onclick="acceptExtra('ai7','Affordability inputs requested')">Collect inputs</button><button class="btn secondary" onclick="dismiss('ai7')">Dismiss</button></div></div>
+<div class="ai" id="ai8" style="display:none"><h4>🟡 Rate context check</h4><p><b>Trigger:</b> Agent quotes an indicative interest rate.</p><p><b>Recommendation:</b> Confirm source/date and distinguish an indicative scenario from a formal offer or locked rate.</p><div class="actions"><button class="btn primary" onclick="acceptExtra('ai8','Rate context captured')">Review context</button><button class="btn secondary" onclick="dismiss('ai8')">Dismiss</button></div></div>
+<div class="card" style="margin-top:15px"><h3>Scenario simulator</h3><p class="small">Additional assessment scenarios for the interviewer/demo. These are simulated triggers.</p><div class="actions">
+<button class="btn secondary" onclick="triggerExtra('ai7')">Customer asks affordability</button>
+<button class="btn secondary" onclick="triggerExtra('ai8')">Agent quotes rate</button>
+<button class="btn dangerbtn" onclick="triggerExtra('ai6')">Agent suggests excluding liability</button>
+<button class="btn secondary" onclick="triggerExtra('ai5')">Customer cites competitor</button>
+</div></div>
+</div></div>
+</section>
+
+<section class="screen" id="post">
+<div class="eyebrow">Meeting complete</div><h1 class="title">Sarah & Mike</h1><p class="sub">Darwix generated a structured meeting outcome from the conversation.</p>
+<div class="grid two">
+<div class="card"><h3>Customer summary</h3>
+<div class="row"><span class="label">Goal</span><b>Purchase ~$550K home in 2–4 weeks</b></div>
+<div class="row"><span class="label">Sarah</span><span>Salaried · confirmed</span></div>
+<div class="row"><span class="label">Mike</span><span>Salary + variable bonus</span></div>
+<div class="row"><span class="label">Auto loan</span><span>$18K balance · $700/month</span></div>
+<div class="row"><span class="label">Competitor</span><span>Customer comparing another lender</span></div>
+</div>
+<div class="card"><h3>Open items</h3>
+<div class="row"><span>Income documentation</span><span class="pill danger">Required</span></div>
+<div class="row"><span>Liability verification</span><span class="pill warn">Confirm</span></div>
+<div class="row"><span>Application completion</span><span class="pill">Follow-up</span></div>
+<h3 style="margin-top:20px">AI interventions</h3>
+<div class="row"><span>Accepted</span><b id="accepted">3</b></div>
+<div class="row"><span>Dismissed</span><b>0</b></div>
+<div class="row"><span>Escalated</span><b id="escalated">0</b></div>
+</div></div>
+<div class="card" style="margin-top:18px"><h3>Next action</h3><p>Request income documentation, confirm liability details, and schedule application completion.</p><div class="actions"><button class="btn primary" onclick="toast('Follow-up task created in mocked CRM')">Create CRM task</button><button class="btn secondary" onclick="toast('Follow-up message prepared for agent review')">Prepare follow-up</button><button class="btn secondary" onclick="show('manager')">Manager view →</button></div></div>
+</section>
+
+<section class="screen" id="manager">
+<div class="eyebrow">Manager workspace</div><h1 class="title">Meeting intelligence</h1><p class="sub">Prioritize follow-up, risk and pipeline actions without reading every conversation.</p>
+<div class="grid three">
+<div class="card metric"><div class="small">Today's meetings</div><div class="big">18</div><div class="small">13 completed</div></div>
+<div class="card metric"><div class="small">Follow-up required</div><div class="big">4</div><div class="small">Across today's meetings</div></div>
+<div class="card metric"><div class="small">Compliance interventions</div><div class="big">3</div><div class="small">1 escalated</div></div>
+</div>
+<div class="card" style="margin-top:18px"><h3>Attention required</h3>
+<div class="row"><span><b>Sarah & Mike</b><br><span class="small">Variable income verification · liability confirmed · next action created</span></span><span class="pill warn">Follow-up</span></div>
+<div class="row"><span><b>Meeting outcome</b><br><span class="small">2 customer-profile interventions accepted · 1 compliance intervention accepted</span></span><span class="pill ok">Ready</span></div>
+<div class="row"><span><b>Mock system actions</b><br><span class="small">CRM task prepared · LOS update pending agent approval</span></span><span class="pill">Pending</span></div>
+</div>
+<div class="card" style="margin-top:18px"><h3>Why this matters</h3><p style="color:#4b5563;line-height:1.6">Darwix converts an unstructured customer conversation into structured information, compliance events and clear next actions while keeping consequential decisions with the agent.</p></div>
+</section>
+
+</main></div></div>
+<div class="toast" id="toast"></div>
+<script>
+let accepted=3, escalated=0;
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));({brief:'n1',live:'n2',post:'n3',manager:'n4'})[id]&&document.getElementById(({brief:'n1',live:'n2',post:'n3',manager:'n4'})[id]).classList.add('active')}
+function dismiss(id){document.getElementById(id).style.display='none';toast('Intervention dismissed — event recorded')}
+function acceptIncome(){accepted++;document.getElementById('ai1').style.display='none';document.getElementById('ai2').style.display='block';document.getElementById('docs').textContent='3 / 6';document.getElementById('bar').style.width='50%';toast('Income clarification captured')}
+function resolveConflict(){accepted++;document.getElementById('ai2').style.display='none';document.getElementById('ai3').style.display='block';document.getElementById('docs').textContent='4 / 6';document.getElementById('bar').style.width='66%';toast('Liability discrepancy resolved and recorded')}
+function useWording(){accepted++;document.getElementById('ai3').style.display='none';document.getElementById('ai4').style.display='block';document.getElementById('accepted').textContent=accepted;toast('Suggested compliant wording accepted')}
+function escalate(){escalated++;document.getElementById('ai3').style.display='none';document.getElementById('ai4').style.display='block';document.getElementById('escalated').textContent=escalated;toast('Compliance event escalated')}
+function createNext(){accepted++;document.getElementById('ai4').style.display='none';document.getElementById('accepted').textContent=accepted;toast('Next action created: documentation + application follow-up')}
+
+function triggerExtra(id){document.querySelectorAll('.ai').forEach(x=>{if(x.id!==id)x.style.display='none'});document.getElementById(id).style.display='block';document.getElementById(id).scrollIntoView({behavior:'smooth',block:'center'});toast('Scenario loaded')}
+function acceptExtra(id,msg){accepted++;document.getElementById(id).style.display='none';document.getElementById('accepted').textContent=accepted;toast(msg+' — event recorded')}
+function escalateExtra(){escalated++;document.getElementById('ai6').style.display='none';document.getElementById('escalated').textContent=escalated;toast('High-severity event escalated')}
+
+function endMeeting(){show('post')}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2200)}
+</script>
+</body></html>
